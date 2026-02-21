@@ -1,13 +1,24 @@
 import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
-// create server
+dotenv.config();
+
+// Create Server
 const app = express();
 
-// routes
+// Middlewares
+app.use(express.json()); //converts json request into an JS Object
+app.use(cookieParser()); //reads and parses cookies from request
+
+// Routes
 app.get("/", (req, res) => {
   res.send("!hi");
 });
 
+// .ENV
+const PORT = process.env.PORT || 3000;
+
 app.listen(3000, (req, res) => {
-  console.log("server is running on port 3000");
+  console.log(`Server running on port ${PORT}`);
 });
