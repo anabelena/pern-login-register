@@ -4,7 +4,9 @@ import cookieParser from "cookie-parser";
 
 dotenv.config();
 
-// Create Server
+const PORT = process.env.PORT || 3000;
+
+// Create Express APP
 const app = express();
 
 // Middlewares
@@ -16,9 +18,7 @@ app.get("/", (req, res) => {
   res.send("!hi");
 });
 
-// .ENV
-const PORT = process.env.PORT || 3000;
-
+// server https 
 app.listen(3000, (req, res) => {
   console.log(`Server running on port ${PORT}`);
 });
